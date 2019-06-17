@@ -1,15 +1,16 @@
 package com.uinte.common.util;
 
+import java.lang.reflect.Field;
+import java.net.URLDecoder;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.uinte.common.context.BaseContextHandler;
-
-import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Field;
-import java.net.URLDecoder;
-import java.util.Date;
 
 
 /**
@@ -31,6 +32,14 @@ public class EntityUtils {
 	public static <T> void setCreatAndUpdatInfo(T entity) {
 		setCreateInfo(entity);
 		setUpdatedInfo(entity);
+	}
+	
+	public static <T> void setPk(T entity) {
+		ReflectionUtils.setFieldValue(entity, "id", UUIDUtils.uuidPK());
+	}
+	
+	public static <T> void setPk(T entity, String pkFieldName) {
+		ReflectionUtils.setFieldValue(entity, pkFieldName, UUIDUtils.uuidPK());
 	}
 	
 	/**

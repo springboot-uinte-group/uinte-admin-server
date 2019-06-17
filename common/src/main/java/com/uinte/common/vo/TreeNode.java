@@ -3,11 +3,9 @@ package com.uinte.common.vo;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- */
 public class TreeNode {
-    protected int id;
-    protected int parentId;
+    protected String id;
+    protected String parentId;
     List<TreeNode> children = new ArrayList<TreeNode>();
     public List<TreeNode> getChildren() {
         return children;
@@ -16,19 +14,19 @@ public class TreeNode {
     public void setChildren(List<TreeNode> children) {
         this.children = children;
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getParentId() {
+    public String getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 

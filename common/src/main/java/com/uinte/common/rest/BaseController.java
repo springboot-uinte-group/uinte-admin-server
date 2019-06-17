@@ -1,24 +1,33 @@
 package com.uinte.common.rest;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uinte.common.biz.BaseBiz;
 import com.uinte.common.context.BaseContextHandler;
+import com.uinte.common.entity.BaseEntity;
 import com.uinte.common.msg.ObjectRestResponse;
 import com.uinte.common.msg.TableResultResponse;
 import com.uinte.common.util.Query;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Map;
+import com.uinte.common.util.UUIDUtils;
 
 /**
  *
  * @param <Biz>  可以认为是service
  * @param <T>  实体类
  */
-public class BaseController<Biz extends BaseBiz, T> {
+public class BaseController<Biz extends BaseBiz, T extends BaseEntity> {
     @Autowired
     protected HttpServletRequest request;
     @Autowired
@@ -32,6 +41,7 @@ public class BaseController<Biz extends BaseBiz, T> {
      */
     @PostMapping
     public ObjectRestResponse<T> add(@RequestBody T entity) {
+    	entity.setId(UUIDUtils.uuidPK());
         baseBiz.insertSelective(entity);
         return new ObjectRestResponse<T>();
     }
@@ -43,7 +53,7 @@ public class BaseController<Biz extends BaseBiz, T> {
      * @return
      */
     @GetMapping("/{id}")
-    public ObjectRestResponse<T> get(@PathVariable int id) {
+    public ObjectRestResponse<T> get(@PathVariable String id) {
         ObjectRestResponse<T> entityObjectRestResponse = new ObjectRestResponse<>();
         Object o = baseBiz.selectById(id);
         entityObjectRestResponse.data((T) o);
@@ -69,7 +79,7 @@ public class BaseController<Biz extends BaseBiz, T> {
      * @return
      */
     @DeleteMapping("/{id}")
-    public ObjectRestResponse<T> remove(@PathVariable int id) {
+    public ObjectRestResponse<T> remove(@PathVariable String id) {
         baseBiz.deleteById(id);
         return new ObjectRestResponse<T>();
     }

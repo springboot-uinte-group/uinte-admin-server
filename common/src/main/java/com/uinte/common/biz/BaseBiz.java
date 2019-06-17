@@ -18,6 +18,7 @@ import java.util.Map;
  * 基础业务逻辑层 service
  */
 public class BaseBiz<M extends Mapper<T>, T> {
+
 	@Autowired
 	protected M mapper;
 
@@ -46,11 +47,13 @@ public class BaseBiz<M extends Mapper<T>, T> {
 	}
 
 	public void insert(T entity) {
+		EntityUtils.setPk(entity);
 		EntityUtils.setCreatAndUpdatInfo(entity);
 		mapper.insert(entity);
 	}
 
 	public void insertSelective(T entity) {
+		EntityUtils.setPk(entity);
 		EntityUtils.setCreatAndUpdatInfo(entity);
 		mapper.insertSelective(entity);
 	}

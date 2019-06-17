@@ -24,4 +24,10 @@ public class UUIDUtils {
         return shortBuffer.toString();
 
     }
+    
+    public static String uuidPK() {
+        return UUID.randomUUID().toString();
+
+    }
+    
 }
