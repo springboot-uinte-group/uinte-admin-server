@@ -1,5 +1,19 @@
 package com.uinte.admin.biz;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
+
 import com.uinte.admin.constants.AdminConstant;
 import com.uinte.admin.entity.Group;
 import com.uinte.admin.entity.Menu;
@@ -11,15 +25,7 @@ import com.uinte.admin.mapper.UserMapper;
 import com.uinte.admin.vo.AuthorityMenuTree;
 import com.uinte.admin.vo.GroupUsers;
 import com.uinte.common.biz.BaseBiz;
-
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
-
-import java.util.*;
+import com.uinte.common.util.UUIDUtils;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -33,7 +39,7 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
 
     @Override
     public void insertSelective(Group entity) {
-        if (AdminConstant.ROOT == entity.getParentId()) {
+        if (AdminConstant.ROOT_PATH == entity.getParentId()) {
             entity.setPath("/" + entity.getCode());
         } else {
             Group parent = this.selectById(entity.getParentId());
@@ -44,7 +50,7 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
 
     @Override
     public void updateById(Group entity) {
-        if (AdminConstant.ROOT == entity.getParentId()) {
+        if (AdminConstant.ROOT_PATH == entity.getParentId()) {
             entity.setPath("/" + entity.getCode());
         } else {
             Group parent = this.selectById(entity.getParentId());
@@ -59,7 +65,7 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
      * @param groupId
      * @return
      */
-    public GroupUsers getGroupUsers(int groupId) {
+    public GroupUsers getGroupUsers(String groupId) {
         return new GroupUsers(userMapper.selectMemberByGroupId(groupId), userMapper.selectLeaderByGroupId(groupId));
     }
 
@@ -70,7 +76,7 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
      * @param members
      * @param leaders
      */
-    public void modifyGroupUsers(int groupId, String members, String leaders) {
+    public void modifyGroupUsers(String groupId, String members, String leaders) {
         //先删除之前关联的成员和用户组关系，领导和用户组关系
         mapper.deleteGroupLeadersById(groupId);
         mapper.deleteGroupMembersById(groupId);
@@ -78,14 +84,14 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
             String[] mem = members.split(",");
             for (String m : mem) {
                 //插入成员
-                mapper.insertGroupMembersById(groupId, Integer.parseInt(m));
+                mapper.insertGroupMembersById(groupId, m);
             }
         }
         if (!StringUtils.isEmpty(leaders)) {
             String[] mem = leaders.split(",");
             for (String m : mem) {
                 //插入领导
-                mapper.insertGroupLeadersById(groupId, Integer.parseInt(m));
+                mapper.insertGroupLeadersById(groupId, m);
             }
         }
     }
@@ -96,9 +102,9 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
      * @param groupId
      * @param menus
      */
-    public void modifyAuthorityMenu(int groupId, String[] menus) {
+    public void modifyAuthorityMenu(String groupId, String[] menus) {
         //先删除该用户组绑定的菜单
-        resourceAuthorityMapper.deleteByAuthorityIdAndResourceType(groupId + "", AdminConstant.RESOURCE_TYPE_MENU);
+        resourceAuthorityMapper.deleteByAuthorityIdAndResourceType(groupId, AdminConstant.RESOURCE_TYPE_MENU);
         //获取所有菜单
         List<Menu> menuList = menuMapper.selectAll();
         Map<String, String> map = new HashMap<String, String>();
@@ -115,7 +121,8 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
         }
         for (String menuId : relationMenus) {
             authority = new ResourceAuthority(AdminConstant.AUTHORITY_TYPE_GROUP, AdminConstant.RESOURCE_TYPE_MENU);
-            authority.setAuthorityId(groupId + "");
+            authority.setId(UUIDUtils.uuidPK());
+            authority.setAuthorityId(groupId);
             authority.setResourceId(menuId);
             authority.setParentId("-1");
             resourceAuthorityMapper.insertSelective(authority);
@@ -138,10 +145,11 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
      * @param menuId
      * @param elementId
      */
-    public void modifyAuthorityElement(int groupId, int menuId, int elementId) {
+    public void modifyAuthorityElement(String groupId, String menuId, String elementId) {
         ResourceAuthority authority = new ResourceAuthority(AdminConstant.AUTHORITY_TYPE_GROUP, AdminConstant.RESOURCE_TYPE_BTN);
-        authority.setAuthorityId(groupId + "");
-        authority.setResourceId(elementId + "");
+        authority.setId(UUIDUtils.uuidPK());
+        authority.setAuthorityId(groupId);
+        authority.setResourceId(elementId);
         authority.setParentId("-1");
         resourceAuthorityMapper.insertSelective(authority);
     }
@@ -153,10 +161,10 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
      * @param menuId
      * @param elementId
      */
-    public void removeAuthorityElement(int groupId, int menuId, int elementId) {
+    public void removeAuthorityElement(String groupId, String menuId, String elementId) {
         ResourceAuthority authority = new ResourceAuthority();
-        authority.setAuthorityId(groupId + "");
-        authority.setResourceId(elementId + "");
+        authority.setAuthorityId(groupId);
+        authority.setResourceId(elementId);
         authority.setParentId("-1");
         resourceAuthorityMapper.delete(authority);
     }
@@ -168,8 +176,8 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
      * @param groupId
      * @return
      */
-    public List<AuthorityMenuTree> getAuthorityMenu(int groupId) {
-        List<Menu> menus = menuMapper.selectMenuByAuthorityId(String.valueOf(groupId), AdminConstant.AUTHORITY_TYPE_GROUP);
+    public List<AuthorityMenuTree> getAuthorityMenu(String groupId) {
+        List<Menu> menus = menuMapper.selectMenuByAuthorityId(groupId, AdminConstant.AUTHORITY_TYPE_GROUP);
         List<AuthorityMenuTree> trees = new ArrayList<AuthorityMenuTree>();
         AuthorityMenuTree node = null;
         for (Menu menu : menus) {
@@ -187,7 +195,7 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
      * @param groupId
      * @return
      */
-    public List<Integer> getAuthorityElement(int groupId) {
+    public List<Integer> getAuthorityElement(String groupId) {
         ResourceAuthority authority = new ResourceAuthority(AdminConstant.AUTHORITY_TYPE_GROUP, AdminConstant.RESOURCE_TYPE_BTN);
         authority.setAuthorityId(groupId + "");
         List<ResourceAuthority> authorities = resourceAuthorityMapper.select(authority);

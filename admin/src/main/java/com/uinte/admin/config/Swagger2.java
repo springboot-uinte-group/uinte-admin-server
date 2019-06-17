@@ -9,10 +9,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -28,8 +30,14 @@ public class Swagger2 {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("swagger-bootstrap-ui RESTful APIs").description("swagger-bootstrap-ui")
-				.termsOfServiceUrl("http://localhost:8999/").contact("developer@mail.com").version("1.0").build();
+		ApiInfoBuilder apiBuilder = new ApiInfoBuilder();
+		apiBuilder.title("restful 接口文档");
+		apiBuilder.description("系统开发接口文档");
+		apiBuilder.termsOfServiceUrl("http://localhost:8999/");
+		Contact contact = new Contact("超级管理员", "www.uinte.com","developer@uinte.com");
+		apiBuilder.contact(contact);
+		apiBuilder.version("1.0");
+		return apiBuilder.build();
 	}
 
 	/**

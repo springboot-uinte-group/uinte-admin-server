@@ -16,5 +16,5 @@ public interface MenuMapper extends Mapper<Menu> {
      * @param userId
      * @return
      */
-    public List<Menu> selectAuthorityMenuByUserId(@Param("userId") int userId);
+    public List<Menu> selectAuthorityMenuByUserId(@Param("userId") String userId);
 }

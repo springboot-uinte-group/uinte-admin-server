@@ -3,13 +3,14 @@ package com.uinte.admin.entity;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.uinte.common.entity.BaseEntity;
+
 @Table(name = "gate_log")
-public class GateLog {
-	@Id
-	private Integer id;
+public class GateLog extends BaseEntity {
+	
+	private static final long serialVersionUID = -3684600428684494186L;
 
 	private String menu;
 
@@ -31,14 +32,6 @@ public class GateLog {
 
 	@Column(name = "METHOD_ARGS")
 	private String methodArgs;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getMenu() {
 		return menu;
@@ -104,5 +97,4 @@ public class GateLog {
 		this.methodArgs = methodArgs;
 	}
 
-	
 }

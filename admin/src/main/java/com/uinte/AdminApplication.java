@@ -10,10 +10,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.uinte.**.mapper")
 @SpringBootApplication
 @EnableCaching  //开启缓存
-
 public class AdminApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AdminApplication.class, args);
     }
+    
 }

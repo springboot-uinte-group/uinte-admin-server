@@ -18,17 +18,15 @@
         </plugin>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/ag_auth?useUnicode=true&amp;characterEncoding=UTF8"
-                        userId="root"
-                        password="john">
+                        connectionURL="jdbc:mysql://localhost:3306/iot-admin-platform?useUnicode=true&amp;characterEncoding=UTF8"
+                        userId="root" password="john">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+        <javaModelGenerator targetPackage="com.uinte.iotbase.entity" targetProject="C:\software\eclipse\mybatis-code-generator"/>
 
-        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>
+        <sqlMapGenerator targetPackage="/mapper/iotbase" targetProject="C:\software\eclipse\mybatis-code-generator"/>
 
-        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}"
-                             type="XMLMAPPER"/>
+        <javaClientGenerator targetPackage="com.uinte.iotbase.rule.rest" targetProject="${targetJavaProject}" type="XMLMAPPER"/>
 
         <!--<table tableName="base_user" domainObjectName="User" >-->
         <!--<generatedKey column="id" identity="false" sqlStatement="myql"/>-->
@@ -47,7 +45,7 @@
         <!--</table>-->
         <!--<table tableName="gate_client" domainObjectName="GateClient">-->
         <!--</table>-->
-        <table tableName="base_menu" domainObjectName="ClientService">
-        </table>
+        <table tableName="drools_rule" domainObjectName="DroolsRule" />
+        
     </context>
 </generatorConfiguration>

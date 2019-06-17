@@ -1,338 +1,199 @@
 package com.uinte.admin.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
+
+import com.uinte.common.entity.BaseEntity;
+
 @Table(name = "base_group_type")
-public class GroupType {
-    @Id
-    private Integer id;
+public class GroupType extends BaseEntity {
 
-    private String code;
+	private static final long serialVersionUID = 2514848856221621499L;
 
-    private String name;
+	private String code;
 
-    private String description;
+	private String name;
 
-    @Column(name = "crt_time")
-    private Date crtTime;
+	private String description;
 
-    @Column(name = "crt_user")
-    private String crtUser;
+	@Column(name = "crt_time")
+	private Date crtTime;
 
-    @Column(name = "crt_name")
-    private String crtName;
+	@Column(name = "crt_user")
+	private String crtUser;
 
-    @Column(name = "crt_host")
-    private String crtHost;
+	@Column(name = "crt_name")
+	private String crtName;
 
-    @Column(name = "upd_time")
-    private Date updTime;
+	@Column(name = "crt_host")
+	private String crtHost;
 
-    @Column(name = "upd_user")
-    private String updUser;
+	@Column(name = "upd_time")
+	private Date updTime;
 
-    @Column(name = "upd_name")
-    private String updName;
+	@Column(name = "upd_user")
+	private String updUser;
 
-    @Column(name = "upd_host")
-    private String updHost;
+	@Column(name = "upd_name")
+	private String updName;
 
-    private String attr1;
+	@Column(name = "upd_host")
+	private String updHost;
 
-    private String attr2;
+	/**
+	 * @return code
+	 */
+	public String getCode() {
+		return code;
+	}
 
-    private String attr3;
+	/**
+	 * @param code
+	 */
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    private String attr4;
+	/**
+	 * @return name
+	 */
+	public String getName() {
+		return name;
+	}
 
-    private String attr5;
+	/**
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    private String attr6;
+	/**
+	 * @return description
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    private String attr7;
+	/**
+	 * @param description
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    private String attr8;
+	/**
+	 * @return crt_time
+	 */
+	public Date getCrtTime() {
+		return crtTime;
+	}
 
-    /**
-     * @return id
-     */
-    public Integer getId() {
-        return id;
-    }
+	/**
+	 * @param crtTime
+	 */
+	public void setCrtTime(Date crtTime) {
+		this.crtTime = crtTime;
+	}
 
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	/**
+	 * @return crt_user
+	 */
+	public String getCrtUser() {
+		return crtUser;
+	}
 
-    /**
-     * @return code
-     */
-    public String getCode() {
-        return code;
-    }
+	/**
+	 * @param crtUser
+	 */
+	public void setCrtUser(String crtUser) {
+		this.crtUser = crtUser;
+	}
 
-    /**
-     * @param code
-     */
-    public void setCode(String code) {
-        this.code = code;
-    }
+	/**
+	 * @return crt_name
+	 */
+	public String getCrtName() {
+		return crtName;
+	}
 
-    /**
-     * @return name
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * @param crtName
+	 */
+	public void setCrtName(String crtName) {
+		this.crtName = crtName;
+	}
 
-    /**
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * @return crt_host
+	 */
+	public String getCrtHost() {
+		return crtHost;
+	}
 
-    /**
-     * @return description
-     */
-    public String getDescription() {
-        return description;
-    }
+	/**
+	 * @param crtHost
+	 */
+	public void setCrtHost(String crtHost) {
+		this.crtHost = crtHost;
+	}
 
-    /**
-     * @param description
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	/**
+	 * @return upd_time
+	 */
+	public Date getUpdTime() {
+		return updTime;
+	}
 
-    /**
-     * @return crt_time
-     */
-    public Date getCrtTime() {
-        return crtTime;
-    }
+	/**
+	 * @param updTime
+	 */
+	public void setUpdTime(Date updTime) {
+		this.updTime = updTime;
+	}
 
-    /**
-     * @param crtTime
-     */
-    public void setCrtTime(Date crtTime) {
-        this.crtTime = crtTime;
-    }
+	/**
+	 * @return upd_user
+	 */
+	public String getUpdUser() {
+		return updUser;
+	}
 
-    /**
-     * @return crt_user
-     */
-    public String getCrtUser() {
-        return crtUser;
-    }
+	/**
+	 * @param updUser
+	 */
+	public void setUpdUser(String updUser) {
+		this.updUser = updUser;
+	}
 
-    /**
-     * @param crtUser
-     */
-    public void setCrtUser(String crtUser) {
-        this.crtUser = crtUser;
-    }
+	/**
+	 * @return upd_name
+	 */
+	public String getUpdName() {
+		return updName;
+	}
 
-    /**
-     * @return crt_name
-     */
-    public String getCrtName() {
-        return crtName;
-    }
+	/**
+	 * @param updName
+	 */
+	public void setUpdName(String updName) {
+		this.updName = updName;
+	}
 
-    /**
-     * @param crtName
-     */
-    public void setCrtName(String crtName) {
-        this.crtName = crtName;
-    }
+	/**
+	 * @return upd_host
+	 */
+	public String getUpdHost() {
+		return updHost;
+	}
 
-    /**
-     * @return crt_host
-     */
-    public String getCrtHost() {
-        return crtHost;
-    }
+	/**
+	 * @param updHost
+	 */
+	public void setUpdHost(String updHost) {
+		this.updHost = updHost;
+	}
 
-    /**
-     * @param crtHost
-     */
-    public void setCrtHost(String crtHost) {
-        this.crtHost = crtHost;
-    }
-
-    /**
-     * @return upd_time
-     */
-    public Date getUpdTime() {
-        return updTime;
-    }
-
-    /**
-     * @param updTime
-     */
-    public void setUpdTime(Date updTime) {
-        this.updTime = updTime;
-    }
-
-    /**
-     * @return upd_user
-     */
-    public String getUpdUser() {
-        return updUser;
-    }
-
-    /**
-     * @param updUser
-     */
-    public void setUpdUser(String updUser) {
-        this.updUser = updUser;
-    }
-
-    /**
-     * @return upd_name
-     */
-    public String getUpdName() {
-        return updName;
-    }
-
-    /**
-     * @param updName
-     */
-    public void setUpdName(String updName) {
-        this.updName = updName;
-    }
-
-    /**
-     * @return upd_host
-     */
-    public String getUpdHost() {
-        return updHost;
-    }
-
-    /**
-     * @param updHost
-     */
-    public void setUpdHost(String updHost) {
-        this.updHost = updHost;
-    }
-
-    /**
-     * @return attr1
-     */
-    public String getAttr1() {
-        return attr1;
-    }
-
-    /**
-     * @param attr1
-     */
-    public void setAttr1(String attr1) {
-        this.attr1 = attr1;
-    }
-
-    /**
-     * @return attr2
-     */
-    public String getAttr2() {
-        return attr2;
-    }
-
-    /**
-     * @param attr2
-     */
-    public void setAttr2(String attr2) {
-        this.attr2 = attr2;
-    }
-
-    /**
-     * @return attr3
-     */
-    public String getAttr3() {
-        return attr3;
-    }
-
-    /**
-     * @param attr3
-     */
-    public void setAttr3(String attr3) {
-        this.attr3 = attr3;
-    }
-
-    /**
-     * @return attr4
-     */
-    public String getAttr4() {
-        return attr4;
-    }
-
-    /**
-     * @param attr4
-     */
-    public void setAttr4(String attr4) {
-        this.attr4 = attr4;
-    }
-
-    /**
-     * @return attr5
-     */
-    public String getAttr5() {
-        return attr5;
-    }
-
-    /**
-     * @param attr5
-     */
-    public void setAttr5(String attr5) {
-        this.attr5 = attr5;
-    }
-
-    /**
-     * @return attr6
-     */
-    public String getAttr6() {
-        return attr6;
-    }
-
-    /**
-     * @param attr6
-     */
-    public void setAttr6(String attr6) {
-        this.attr6 = attr6;
-    }
-
-    /**
-     * @return attr7
-     */
-    public String getAttr7() {
-        return attr7;
-    }
-
-    /**
-     * @param attr7
-     */
-    public void setAttr7(String attr7) {
-        this.attr7 = attr7;
-    }
-
-    /**
-     * @return attr8
-     */
-    public String getAttr8() {
-        return attr8;
-    }
-
-    /**
-     * @param attr8
-     */
-    public void setAttr8(String attr8) {
-        this.attr8 = attr8;
-    }
 }

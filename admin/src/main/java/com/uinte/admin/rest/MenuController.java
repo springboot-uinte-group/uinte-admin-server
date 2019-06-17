@@ -1,13 +1,7 @@
 package com.uinte.admin.rest;
 
-import com.uinte.admin.biz.MenuBiz;
-import com.uinte.admin.biz.UserBiz;
-import com.uinte.admin.constants.AdminConstant;
-import com.uinte.admin.entity.Menu;
-import com.uinte.admin.vo.AuthorityMenuTree;
-import com.uinte.admin.vo.MenuTree;
-import com.uinte.common.rest.BaseController;
-import com.uinte.common.util.TreeUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -16,10 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import tk.mybatis.mapper.entity.Example;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.uinte.admin.biz.MenuBiz;
+import com.uinte.admin.biz.UserBiz;
+import com.uinte.admin.constants.AdminConstant;
+import com.uinte.admin.entity.Menu;
+import com.uinte.admin.vo.MenuTree;
+import com.uinte.common.rest.BaseController;
+import com.uinte.common.util.TreeUtil;
+
+import tk.mybatis.mapper.entity.Example;
 
 @RestController
 @RequestMapping("menu")
@@ -40,14 +40,14 @@ public class MenuController extends BaseController<MenuBiz, Menu> {
         if (StringUtils.isNotBlank(title)) {
             example.createCriteria().andLike("title", "%" + title + "%");
         }
-        return getMenuTree(baseBiz.selectByExample(example), AdminConstant.ROOT);
+        return getMenuTree(baseBiz.selectByExample(example), AdminConstant.ROOT_PATH);
     }
 
 
 
 
 
-    private List<MenuTree> getMenuTree(List<Menu> menus,int root) {
+    private List<MenuTree> getMenuTree(List<Menu> menus,String root) {
         List<MenuTree> trees = new ArrayList<MenuTree>();
         MenuTree node = null;
         for (Menu menu : menus) {

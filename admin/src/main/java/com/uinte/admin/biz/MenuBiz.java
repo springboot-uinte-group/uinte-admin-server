@@ -15,6 +15,7 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class)
 @CacheConfig(cacheNames = "MenuBiz")
 public class MenuBiz extends BaseBiz<MenuMapper, Menu> {
+	
 	@Override
 	public List<Menu> selectListAll() {
 		return super.selectListAll();
@@ -22,7 +23,7 @@ public class MenuBiz extends BaseBiz<MenuMapper, Menu> {
 
 	@Override
 	public void insertSelective(Menu entity) {
-		if (AdminConstant.ROOT == entity.getParentId()) {
+		if (AdminConstant.ROOT_PATH == entity.getParentId()) {
 			entity.setPath("/" + entity.getCode());
 		} else {
 			Menu parent = this.selectById(entity.getParentId());
@@ -33,7 +34,7 @@ public class MenuBiz extends BaseBiz<MenuMapper, Menu> {
 
 	@Override
 	public void updateById(Menu entity) {
-		if (AdminConstant.ROOT == entity.getParentId()) {
+		if (AdminConstant.ROOT_PATH == entity.getParentId()) {
 			entity.setPath("/" + entity.getCode());
 		} else {
 			Menu parent = this.selectById(entity.getParentId());
@@ -53,7 +54,7 @@ public class MenuBiz extends BaseBiz<MenuMapper, Menu> {
 	 * @param id
 	 * @return
 	 */
-	public List<Menu> getUserAuthorityMenuByUserId(int id) {
+	public List<Menu> getUserAuthorityMenuByUserId(String id) {
 		return mapper.selectAuthorityMenuByUserId(id);
 	}
 

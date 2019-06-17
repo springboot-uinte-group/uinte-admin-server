@@ -1,5 +1,6 @@
 package com.uinte.admin.service;
 
+import com.alibaba.fastjson.JSON;
 import com.uinte.admin.biz.ElementBiz;
 import com.uinte.admin.biz.MenuBiz;
 import com.uinte.admin.biz.UserBiz;
@@ -13,6 +14,7 @@ import com.uinte.admin.vo.PermissionInfo;
 import com.uinte.admin.vo.user.FrontUser;
 import com.uinte.admin.vo.user.UserInfo;
 import com.uinte.common.constant.CommonConstants;
+import com.uinte.common.util.BaseEntityTools;
 import com.uinte.common.util.TreeUtil;
 
 import org.apache.commons.lang3.StringUtils;
@@ -141,7 +143,7 @@ public class PermissionService {
      * @param root=-1
      * @return
      */
-    private List<MenuTree> getMenuTree(List<Menu> menus, int root) {
+    private List<MenuTree> getMenuTree(List<Menu> menus, String root) {
         List<MenuTree> trees = new ArrayList<MenuTree>();
         MenuTree node = null;
         for (Menu menu : menus) {
@@ -149,7 +151,8 @@ public class PermissionService {
             BeanUtils.copyProperties(menu, node);
             trees.add(node);
         }
-        return TreeUtil.bulid(trees, root);
+        List<MenuTree> mts = TreeUtil.bulid(trees, root);
+        return mts;
     }
 
     /**
@@ -195,7 +198,10 @@ public class PermissionService {
         User user = userBiz.getUserByUsername(username);
         //获取用户可以访问的菜单
         List<Menu> menus = menuBiz.getUserAuthorityMenuByUserId(user.getId());
+        System.out.println(BaseEntityTools.ListBeanToJsonArray(menus));
         //返回树结构菜单
-        return getMenuTree(menus, AdminConstant.ROOT);
+        List<MenuTree>  ms = getMenuTree(menus, AdminConstant.ROOT_PATH);
+        return ms;
     }
+    
 }

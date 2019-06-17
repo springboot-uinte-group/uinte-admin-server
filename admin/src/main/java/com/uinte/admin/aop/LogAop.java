@@ -13,6 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.alibaba.fastjson.JSONObject;
 import com.uinte.admin.biz.GateLogBiz;
 import com.uinte.admin.entity.GateLog;
+import com.uinte.common.util.UUIDUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
