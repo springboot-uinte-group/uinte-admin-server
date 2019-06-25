@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 import com.uinte.common.entity.BaseEntity;
 
-@Table(name = "base_group_type")
+@Table(name = "uinte_group_type")
 public class GroupType extends BaseEntity {
 
 	private static final long serialVersionUID = 2514848856221621499L;
@@ -18,28 +18,28 @@ public class GroupType extends BaseEntity {
 
 	private String description;
 
-	@Column(name = "crt_time")
+	@Column(name = "create_time")
 	private Date crtTime;
 
-	@Column(name = "crt_user")
+	@Column(name = "create_user")
 	private String crtUser;
 
-	@Column(name = "crt_name")
+	@Column(name = "create_name")
 	private String crtName;
 
-	@Column(name = "crt_host")
+	@Column(name = "create_host")
 	private String crtHost;
 
-	@Column(name = "upd_time")
+	@Column(name = "update_time")
 	private Date updTime;
 
-	@Column(name = "upd_user")
+	@Column(name = "update_user")
 	private String updUser;
 
-	@Column(name = "upd_name")
+	@Column(name = "update_name")
 	private String updName;
 
-	@Column(name = "upd_host")
+	@Column(name = "update_host")
 	private String updHost;
 
 	/**

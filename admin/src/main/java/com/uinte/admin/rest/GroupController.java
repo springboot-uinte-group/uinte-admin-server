@@ -23,9 +23,6 @@ import com.uinte.common.util.TreeUtil;
 
 import tk.mybatis.mapper.entity.Example;
 
-/**
- *
- */
 @RestController
 @RequestMapping("group")
 public class GroupController extends BaseController<GroupBiz, Group> {
@@ -93,7 +90,7 @@ public class GroupController extends BaseController<GroupBiz, Group> {
 	public ObjectRestResponse modifyMenuAuthority(@PathVariable String id, String menuTrees) {
 		String[] menus = menuTrees.split(",");
 		baseBiz.modifyAuthorityMenu(id, menus);
-		return new ObjectRestResponse().rel(true);
+		return new ObjectRestResponse<>().rel(true);
 	}
 
 	/**
@@ -105,7 +102,7 @@ public class GroupController extends BaseController<GroupBiz, Group> {
 	@RequestMapping(value = "/{id}/authority/menu", method = RequestMethod.GET)
 	@ResponseBody
 	public ObjectRestResponse<List<AuthorityMenuTree>> getMenuAuthority(@PathVariable String id) {
-		return new ObjectRestResponse().data(baseBiz.getAuthorityMenu(id)).rel(true);
+		return new ObjectRestResponse<List<AuthorityMenuTree>>().data(baseBiz.getAuthorityMenu(id)).rel(true);
 	}
 
 	/**
@@ -147,7 +144,7 @@ public class GroupController extends BaseController<GroupBiz, Group> {
 	@RequestMapping(value = "/{id}/authority/element", method = RequestMethod.GET)
 	@ResponseBody
 	public ObjectRestResponse<List<Integer>> getElementAuthority(@PathVariable String id) {
-		return new ObjectRestResponse().data(baseBiz.getAuthorityElement(id)).rel(true);
+		return new ObjectRestResponse<List<Integer>>().data(baseBiz.getAuthorityElement(id)).rel(true);
 	}
 
 	/**

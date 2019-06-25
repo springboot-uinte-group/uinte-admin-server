@@ -1,10 +1,10 @@
 package com.uinte.admin.exception;
 
-/**
- * Created by ace on 2017/9/15.
- */
 public class JwtTokenExpiredException extends Exception {
-    public JwtTokenExpiredException(String s) {
+
+	private static final long serialVersionUID = 5695931418366239329L;
+
+	public JwtTokenExpiredException(String s) {
         super(s);
     }
 }

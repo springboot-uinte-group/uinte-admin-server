@@ -41,9 +41,8 @@ public class BaseController<Biz extends BaseBiz, T extends BaseEntity> {
      */
     @PostMapping
     public ObjectRestResponse<T> add(@RequestBody T entity) {
-    	entity.setId(UUIDUtils.uuidPK());
         baseBiz.insertSelective(entity);
-        return new ObjectRestResponse<T>();
+        return new ObjectRestResponse<T>().data(entity);
     }
 
     /**

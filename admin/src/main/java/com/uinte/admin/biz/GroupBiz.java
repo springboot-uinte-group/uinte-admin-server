@@ -2,6 +2,7 @@ package com.uinte.admin.biz;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -16,6 +17,8 @@ import org.springframework.util.StringUtils;
 
 import com.uinte.admin.constants.AdminConstant;
 import com.uinte.admin.entity.Group;
+import com.uinte.admin.entity.GroupLeader;
+import com.uinte.admin.entity.GroupMember;
 import com.uinte.admin.entity.Menu;
 import com.uinte.admin.entity.ResourceAuthority;
 import com.uinte.admin.mapper.GroupMapper;
@@ -39,7 +42,7 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
 
     @Override
     public void insertSelective(Group entity) {
-        if (AdminConstant.ROOT_PATH == entity.getParentId()) {
+        if (AdminConstant.ROOT_PATH.equalsIgnoreCase(entity.getParentId())) {
             entity.setPath("/" + entity.getCode());
         } else {
             Group parent = this.selectById(entity.getParentId());
@@ -50,7 +53,7 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
 
     @Override
     public void updateById(Group entity) {
-        if (AdminConstant.ROOT_PATH == entity.getParentId()) {
+        if (AdminConstant.ROOT_PATH.equalsIgnoreCase(entity.getParentId())) {
             entity.setPath("/" + entity.getCode());
         } else {
             Group parent = this.selectById(entity.getParentId());
@@ -82,16 +85,26 @@ public class GroupBiz extends BaseBiz<GroupMapper, Group> {
         mapper.deleteGroupMembersById(groupId);
         if (!StringUtils.isEmpty(members)) {
             String[] mem = members.split(",");
-            for (String m : mem) {
+            for (String userId : mem) {
+            	GroupMember gl = new GroupMember();
+            	gl.setId(UUIDUtils.uuidPK());
+            	gl.setGroupId(groupId);
+            	gl.setUserId(userId);
+            	gl.setCrtTime(new Date());
                 //插入成员
-                mapper.insertGroupMembersById(groupId, m);
+                mapper.insertGroupMembersById(gl);
             }
         }
         if (!StringUtils.isEmpty(leaders)) {
             String[] mem = leaders.split(",");
-            for (String m : mem) {
+            for (String userId : mem) {
+            	GroupLeader gl = new GroupLeader();
+            	gl.setId(UUIDUtils.uuidPK());
+            	gl.setGroupId(groupId);
+            	gl.setUserId(userId);
+            	gl.setCrtTime(new Date());
                 //插入领导
-                mapper.insertGroupLeadersById(groupId, m);
+                mapper.insertGroupLeadersById(gl);
             }
         }
     }

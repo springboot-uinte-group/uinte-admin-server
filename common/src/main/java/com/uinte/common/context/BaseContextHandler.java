@@ -1,5 +1,10 @@
 package com.uinte.common.context;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -8,11 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import com.uinte.common.constant.CommonConstants;
 import com.uinte.common.util.StringHelper;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  */

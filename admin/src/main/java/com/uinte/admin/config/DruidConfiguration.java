@@ -32,26 +32,25 @@ public class DruidConfiguration {
 	@Bean
 	public ServletRegistrationBean druidServlet() {
 		logger.info("init Druid Servlet Configuration ");
-		ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(),
-				"/druid/*");
+		ServletRegistrationBean regisBean = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
 		// IP白名单
-		servletRegistrationBean.addInitParameter("allow", "*");
+		regisBean.addInitParameter("allow", "*");
 		// IP黑名单(共同存在时，deny优先于allow)
-		servletRegistrationBean.addInitParameter("deny", "192.168.1.100");
+		regisBean.addInitParameter("deny", "192.168.1.100");
 		// 控制台管理用户
-		servletRegistrationBean.addInitParameter("loginUsername", "admin");
-		servletRegistrationBean.addInitParameter("loginPassword", "123456");
+		regisBean.addInitParameter("loginUsername", "admin");
+		regisBean.addInitParameter("loginPassword", "123456");
 		// 是否能够重置数据 禁用HTML页面上的“Reset All”功能
-		servletRegistrationBean.addInitParameter("resetEnable", "false");
-		return servletRegistrationBean;
+		regisBean.addInitParameter("resetEnable", "false");
+		return regisBean;
 	}
 
 	@Bean
 	public FilterRegistrationBean filterRegistrationBean() {
-		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
-		filterRegistrationBean.addUrlPatterns("/*");
-		filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
-		return filterRegistrationBean;
+		FilterRegistrationBean filterRegisBean = new FilterRegistrationBean(new WebStatFilter());
+		filterRegisBean.addUrlPatterns("/*");
+		filterRegisBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+		return filterRegisBean;
 	}
 
 	// 解决 spring.datasource.filters=stat,wall,log4j 无法正常注册进去

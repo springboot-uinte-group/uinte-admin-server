@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import com.uinte.admin.constants.AdminConstant;
 import com.uinte.common.entity.BaseEntity;
 
-@Table(name = "base_menu")
+@Table(name = "uinte_menu")
 public class Menu extends BaseEntity {
 
 	private static final long serialVersionUID = -3630836072137359720L;
@@ -28,34 +28,37 @@ public class Menu extends BaseEntity {
 
 	private String description;
 
-	@Column(name = "crt_time")
+	@Column(name = "create_time")
 	private Date crtTime;
 
-	@Column(name = "crt_user")
+	@Column(name = "create_user")
 	private String crtUser;
 
-	@Column(name = "crt_name")
+	@Column(name = "create_name")
 	private String crtName;
 
-	@Column(name = "crt_host")
+	@Column(name = "create_host")
 	private String crtHost;
 
-	@Column(name = "upd_time")
+	@Column(name = "update_time")
 	private Date updTime;
 
-	@Column(name = "upd_user")
+	@Column(name = "update_user")
 	private String updUser;
 
-	@Column(name = "upd_name")
+	@Column(name = "update_name")
 	private String updName;
 
-	@Column(name = "upd_host")
+	@Column(name = "update_host")
 	private String updHost;
 
 	private String path;
 
 	@Column(name = "ui_component")
 	private String uiComponent;
+	
+	@Column(name = "default_expand")
+	private Boolean defaultExpand; //默认展开
 
 	/**
 	 * @return code
@@ -289,13 +292,22 @@ public class Menu extends BaseEntity {
 		this.uiComponent = uiComponent;
 	}
 
+	
+	public Boolean getDefaultExpand() {
+		return defaultExpand;
+	}
+
+	public void setDefaultExpand(Boolean defaultExpand) {
+		this.defaultExpand = defaultExpand;
+	}
+
 	@Override
 	public String toString() {
 		return "Menu [code=" + code + ", title=" + title + ", parentId=" + parentId + ", href=" + href + ", icon="
 				+ icon + ", type=" + type + ", description=" + description + ", crtTime=" + crtTime + ", crtUser="
 				+ crtUser + ", crtName=" + crtName + ", crtHost=" + crtHost + ", updTime=" + updTime + ", updUser="
 				+ updUser + ", updName=" + updName + ", updHost=" + updHost + ", path=" + path + ", uiComponent="
-				+ uiComponent + "]";
+				+ uiComponent + ", defaultExpand=" + defaultExpand + "]";
 	}
 
 }

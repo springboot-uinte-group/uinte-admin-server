@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 import com.uinte.common.entity.BaseEntity;
 
-@Table(name = "gate_log")
+@Table(name = "UINTE_LOG")
 public class GateLog extends BaseEntity {
 	
 	private static final long serialVersionUID = -3684600428684494186L;
@@ -18,16 +18,16 @@ public class GateLog extends BaseEntity {
 
 	private String uri;
 
-	@Column(name = "crt_time")
+	@Column(name = "create_time")
 	private Date crtTime;
 
-	@Column(name = "crt_user")
+	@Column(name = "create_user")
 	private String crtUser;
 
-	@Column(name = "crt_name")
+	@Column(name = "create_name")
 	private String crtName;
 
-	@Column(name = "crt_host")
+	@Column(name = "create_host")
 	private String crtHost;
 
 	@Column(name = "METHOD_ARGS")

@@ -3,6 +3,8 @@ package com.uinte.admin.mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.uinte.admin.entity.Group;
+import com.uinte.admin.entity.GroupLeader;
+import com.uinte.admin.entity.GroupMember;
 
 import tk.mybatis.mapper.common.Mapper;
 
@@ -11,7 +13,7 @@ public interface GroupMapper extends Mapper<Group> {
 
 	public void deleteGroupLeadersById(@Param("groupId") String groupId);
 
-	public void insertGroupMembersById(@Param("groupId") String groupId, @Param("userId") String userId);
+	public void insertGroupMembersById(GroupMember group);
 
-	public void insertGroupLeadersById(@Param("groupId") String groupId, @Param("userId") String userId);
+	public void insertGroupLeadersById(GroupLeader group);
 }

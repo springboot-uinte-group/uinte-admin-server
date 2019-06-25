@@ -105,5 +105,17 @@ public class BaseBiz<M extends Mapper<T>, T> {
 		// 得到对象的条数 result.getTotal()
 		return new TableResultResponse<T>(result.getTotal(), list);
 	}
+	
+	public TableResultResponse<T> selectByQuerySpe(Query query, Example example) {
+		if (query.entrySet().size() > 0) {
+			Example.Criteria criteria = example.createCriteria();
+			for (Map.Entry<String, Object> entry : query.entrySet()) {
+				criteria.andLike(entry.getKey(), "%" + entry.getValue().toString() + "%");
+			}
+		}
+		Page<Object> result = PageHelper.startPage(query.getPage(), query.getLimit());
+		List<T> list = mapper.selectByExample(example);
+		return new TableResultResponse<T>(result.getTotal(), list);
+	}
 
 }

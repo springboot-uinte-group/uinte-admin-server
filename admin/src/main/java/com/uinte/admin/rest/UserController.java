@@ -11,12 +11,12 @@ import com.uinte.admin.entity.User;
 import com.uinte.admin.service.PermissionService;
 import com.uinte.admin.vo.MenuTree;
 import com.uinte.admin.vo.user.FrontUser;
+import com.uinte.common.context.BaseContextHandler;
+import com.uinte.common.msg.ObjectRestResponse;
 import com.uinte.common.rest.BaseController;
 
 import java.util.List;
-/**
- *  控制层
- */
+
 @RestController
 @RequestMapping("user")
 public class UserController extends BaseController<UserBiz, User> {
@@ -26,6 +26,9 @@ public class UserController extends BaseController<UserBiz, User> {
 
     @Autowired
     private MenuBiz menuBiz;
+    
+    @Autowired
+    private UserBiz userBiz;
 
     /**
      * 根据token得到该用户信息和菜单和按钮
@@ -65,6 +68,14 @@ public class UserController extends BaseController<UserBiz, User> {
     public @ResponseBody
     List<Menu> getAllMenus() throws Exception {
         return menuBiz.selectListAll();
+    }
+    
+    @PutMapping("/{id}")
+    public ObjectRestResponse<User> update(@RequestBody User entity) {
+    	entity.setUpdUser(BaseContextHandler.getUserID());
+    	entity.setUpdName(BaseContextHandler.getUsername());
+    	userBiz.updateSelectiveById(entity);
+        return new ObjectRestResponse<User>();
     }
 
 }

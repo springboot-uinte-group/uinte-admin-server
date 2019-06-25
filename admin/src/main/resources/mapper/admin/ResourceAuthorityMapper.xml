@@ -11,12 +11,14 @@
     <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
     <result column="path" jdbcType="VARCHAR" property="path" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="crt_time" jdbcType="DATE" property="crtTime" />
-    <result column="crt_user" jdbcType="VARCHAR" property="crtUser" />
-    <result column="crt_name" jdbcType="VARCHAR" property="crtName" />
-    <result column="crt_host" jdbcType="VARCHAR" property="crtHost" />
+    <result column="create_time" jdbcType="DATE" property="crtTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="crtUser" />
+    <result column="create_name" jdbcType="VARCHAR" property="crtName" />
+    <result column="create_host" jdbcType="VARCHAR" property="crtHost" />
   </resultMap>
+  
   <delete id="deleteByAuthorityIdAndResourceType">
-    delete from base_resource_authority where authority_id = #{authorityId} and resource_type = #{resourceType}
+    delete from uinte_resource_authority where authority_id = #{authorityId} and resource_type = #{resourceType}
   </delete>
+  
 </mapper>

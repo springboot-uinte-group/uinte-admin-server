@@ -23,7 +23,7 @@ public class MenuBiz extends BaseBiz<MenuMapper, Menu> {
 
 	@Override
 	public void insertSelective(Menu entity) {
-		if (AdminConstant.ROOT_PATH == entity.getParentId()) {
+		if (AdminConstant.ROOT_PATH.equalsIgnoreCase(entity.getParentId())) {
 			entity.setPath("/" + entity.getCode());
 		} else {
 			Menu parent = this.selectById(entity.getParentId());
@@ -34,7 +34,7 @@ public class MenuBiz extends BaseBiz<MenuMapper, Menu> {
 
 	@Override
 	public void updateById(Menu entity) {
-		if (AdminConstant.ROOT_PATH == entity.getParentId()) {
+		if (AdminConstant.ROOT_PATH.equalsIgnoreCase(entity.getParentId())) {
 			entity.setPath("/" + entity.getCode());
 		} else {
 			Menu parent = this.selectById(entity.getParentId());

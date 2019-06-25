@@ -14,32 +14,32 @@
 		<result column="path" jdbcType="VARCHAR" property="path" />
 		<result column="method" jdbcType="VARCHAR" property="method" />
 		<result column="description" jdbcType="VARCHAR" property="description" />
-		<result column="crt_time" jdbcType="DATE" property="crtTime" />
-		<result column="crt_user" jdbcType="VARCHAR" property="crtUser" />
-		<result column="crt_name" jdbcType="VARCHAR" property="crtName" />
-		<result column="crt_host" jdbcType="VARCHAR" property="crtHost" />
+		<result column="create_time" jdbcType="DATE" property="crtTime" />
+		<result column="create_user" jdbcType="VARCHAR" property="crtUser" />
+		<result column="create_name" jdbcType="VARCHAR" property="crtName" />
+		<result column="create_host" jdbcType="VARCHAR" property="crtHost" />
 	</resultMap>
 	
 	<!--根据用户的id查询用户的按钮 -->
 	<select id="selectAuthorityElementByUserId" resultMap="BaseResultMap">
 		select distinct t.code,t.type,t.name,t.uri,t.method,m.title as menu_id from
-		base_resource_authority ra
-		inner join base_element t
+		uinte_resource_authority ra
+		inner join uinte_element t
 		on ra.resource_id = t.id
 		and ra.authority_id in (
-			select group_id from base_group_member where user_id = #{userId}
-			union select group_id from base_group_leader where user_id = #{userId}
+			select group_id from uinte_group_member where user_id = #{userId}
+			union select group_id from uinte_group_leader where user_id = #{userId}
 		)
 		and ra.authority_type = 'group'
 		and ra.resource_type = 'button'
-		inner join base_menu m
+		inner join uinte_menu m
 		on t.menu_id = m.id
 	</select>
 	
 	<select id="selectAllElementPermissions" resultMap="BaseResultMap">
 		select distinct t.code,t.type,t.name,t.uri,t.method,m.title as menu_id from
-		base_element t
-		inner join base_menu m
+		uinte_element t
+		inner join uinte_menu m
 		on t.menu_id = m.id
 	</select>
 	

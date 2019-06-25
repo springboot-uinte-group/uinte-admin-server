@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 import com.uinte.common.entity.BaseEntity;
 
-@Table(name = "base_user")
+@Table(name = "uinte_user")
 public class User extends BaseEntity {
 
 	private static final long serialVersionUID = -1169658343477483960L;
@@ -36,28 +36,28 @@ public class User extends BaseEntity {
 
     private String description;
 
-    @Column(name = "crt_time")
+    @Column(name = "create_time")
     private Date crtTime;
 
-    @Column(name = "crt_user")
+    @Column(name = "create_user")
     private String crtUser;
 
-    @Column(name = "crt_name")
+    @Column(name = "create_name")
     private String crtName;
 
-    @Column(name = "crt_host")
+    @Column(name = "create_host")
     private String crtHost;
 
-    @Column(name = "upd_time")
+    @Column(name = "update_time")
     private Date updTime;
 
-    @Column(name = "upd_user")
+    @Column(name = "update_user")
     private String updUser;
 
-    @Column(name = "upd_name")
+    @Column(name = "update_name")
     private String updName;
 
-    @Column(name = "upd_host")
+    @Column(name = "update_host")
     private String updHost;
 
     /**

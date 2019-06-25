@@ -13,6 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.alibaba.fastjson.JSONObject;
 import com.uinte.admin.biz.GateLogBiz;
 import com.uinte.admin.entity.GateLog;
+import com.uinte.common.context.BaseContextHandler;
 import com.uinte.common.util.UUIDUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -71,6 +72,8 @@ public class LogAop {
 		gateLog.setOpt(req.getMethod());
 		gateLog.setUri(req.getRequestURI());
 		gateLog.setMenu(signature.getName());
+		gateLog.setCrtUser(BaseContextHandler.getUserID());
+		gateLog.setCrtName(BaseContextHandler.getUsername());
 		gateLog.setMethodArgs(handleArgs(paramNames, obj));
 		gateLogBiz.insertSelective(gateLog);
 	}

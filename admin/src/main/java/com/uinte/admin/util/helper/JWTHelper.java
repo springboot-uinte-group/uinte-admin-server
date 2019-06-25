@@ -14,7 +14,9 @@ import org.joda.time.DateTime;
 /**
  */
 public class JWTHelper {
+	
     private static RsaKeyHelper rsaKeyHelper = new RsaKeyHelper();
+    
     /**
      * 密钥加密token
      *
@@ -47,7 +49,7 @@ public class JWTHelper {
     public static String generateToken(IJWTInfo jwtInfo, byte priKey[], int expire) throws Exception {
         String compactJws = Jwts.builder()
                 .setSubject(jwtInfo.getUniqueName())
-                .claim(CommonConstants.JWT_KEY_USER_ID, jwtInfo.getId())
+				.claim(CommonConstants.JWT_KEY_USER_ID, jwtInfo.getId())
                 .claim(CommonConstants.JWT_KEY_NAME, jwtInfo.getName())
                 .setExpiration(DateTime.now().plusSeconds(expire).toDate())
                 .signWith(SignatureAlgorithm.RS256, rsaKeyHelper.getPrivateKey(priKey))
@@ -77,6 +79,7 @@ public class JWTHelper {
         Jws<Claims> claimsJws = Jwts.parser().setSigningKey(rsaKeyHelper.getPublicKey(pubKey)).parseClaimsJws(token);
         return claimsJws;
     }
+    
     /**
      * 获取token中的用户信息
      *
@@ -90,6 +93,7 @@ public class JWTHelper {
         Claims body = claimsJws.getBody();
         return new JWTInfo(body.getSubject(), StringHelper.getObjectValue(body.get(CommonConstants.JWT_KEY_USER_ID)), StringHelper.getObjectValue(body.get(CommonConstants.JWT_KEY_NAME)));
     }
+    
     /**
      * 获取token中的用户信息
      *
@@ -101,6 +105,6 @@ public class JWTHelper {
     public static IJWTInfo getInfoFromToken(String token, byte[] pubKey) throws Exception {
         Jws<Claims> claimsJws = parserToken(token, pubKey);
         Claims body = claimsJws.getBody();
-        return new JWTInfo(body.getSubject(), StringHelper.getObjectValue(body.get(CommonConstants.JWT_KEY_USER_ID)), StringHelper.getObjectValue(body.get(CommonConstants.JWT_KEY_NAME)));
+		return new JWTInfo(body.getSubject(), StringHelper.getObjectValue(body.get(CommonConstants.JWT_KEY_USER_ID)), StringHelper.getObjectValue(body.get(CommonConstants.JWT_KEY_NAME)));
     }
 }

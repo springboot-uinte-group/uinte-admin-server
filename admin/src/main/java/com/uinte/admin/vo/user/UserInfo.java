@@ -6,60 +6,62 @@ import java.util.Date;
 /**
  *
  */
-public class UserInfo implements Serializable{
-    public String id;
-    public String username;
-    public String password;
-    public String name;
-    private String description;
+public class UserInfo implements Serializable {
 
-    public Date getUpdTime() {
-        return updTime;
-    }
+	private static final long serialVersionUID = 5734890177788067231L;
+	public String id;
+	public String username;
+	public String password;
+	public String name;
+	private String description;
 
-    public void setUpdTime(Date updTime) {
-        this.updTime = updTime;
-    }
+	public Date getUpdTime() {
+		return updTime;
+	}
 
-    private Date updTime;
+	public void setUpdTime(Date updTime) {
+		this.updTime = updTime;
+	}
 
-    public String getId() {
-        return id;
-    }
+	private Date updTime;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }

@@ -54,6 +54,7 @@ public class MenuController extends BaseController<MenuBiz, Menu> {
             node = new MenuTree();
             BeanUtils.copyProperties(menu, node);
             node.setLabel(menu.getTitle());
+            node.setSpread(menu.getDefaultExpand());
             trees.add(node);
         }
         return TreeUtil.bulid(trees,root) ;

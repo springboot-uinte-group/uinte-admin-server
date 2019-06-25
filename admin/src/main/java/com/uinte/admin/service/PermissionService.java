@@ -76,7 +76,7 @@ public class PermissionService {
     public List<PermissionInfo> getAllPermission() {
         List<Menu> menus = menuBiz.selectListAll();
         List<PermissionInfo> result = new ArrayList<PermissionInfo>();
-        PermissionInfo info = null;
+//        PermissionInfo info = null;
         menu2permission(menus, result);
         List<Element> elements = elementBiz.getAllElementPermissions();
         element2permission(result, elements);
@@ -149,6 +149,7 @@ public class PermissionService {
         for (Menu menu : menus) {
             node = new MenuTree();
             BeanUtils.copyProperties(menu, node);
+            node.setSpread(menu.getDefaultExpand());
             trees.add(node);
         }
         List<MenuTree> mts = TreeUtil.bulid(trees, root);

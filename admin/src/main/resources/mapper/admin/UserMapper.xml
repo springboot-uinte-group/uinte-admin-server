@@ -16,24 +16,25 @@
     <result column="sex" jdbcType="CHAR" property="sex" />
     <result column="type" jdbcType="CHAR" property="type" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="crt_time" jdbcType="DATE" property="crtTime" />
-    <result column="crt_user" jdbcType="VARCHAR" property="crtUser" />
-    <result column="crt_name" jdbcType="VARCHAR" property="crtName" />
-    <result column="crt_host" jdbcType="VARCHAR" property="crtHost" />
-    <result column="upd_time" jdbcType="DATE" property="updTime" />
-    <result column="upd_user" jdbcType="VARCHAR" property="updUser" />
-    <result column="upd_name" jdbcType="VARCHAR" property="updName" />
-    <result column="upd_host" jdbcType="VARCHAR" property="updHost" />
+    <result column="create_time" jdbcType="DATE" property="crtTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="crtUser" />
+    <result column="create_name" jdbcType="VARCHAR" property="crtName" />
+    <result column="create_host" jdbcType="VARCHAR" property="crtHost" />
+    <result column="update_time" jdbcType="DATE" property="updTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updUser" />
+    <result column="update_name" jdbcType="VARCHAR" property="updName" />
+    <result column="update_host" jdbcType="VARCHAR" property="updHost" />
   </resultMap>
   
   <select id="selectMemberByGroupId" resultMap="BaseResultMap">
-    select u.* from base_user u
-    left join base_group_member gm
+    select u.* from uinte_user u
+    left join uinte_group_member gm
     on gm.user_id = u.id where gm.group_id = #{groupId}
   </select>
+  
   <select id="selectLeaderByGroupId" resultMap="BaseResultMap">
-    select u.* from base_user u
-    left join base_group_leader gm
+    select u.* from uinte_user u
+    left join uinte_group_leader gm
     on gm.user_id = u.id where gm.group_id = #{groupId}
   </select>
   

@@ -1,14 +1,13 @@
 package com.uinte.admin.runner;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.core.RedisTemplate;
 
 import com.uinte.admin.config.UserAuthConfig;
 import com.uinte.admin.util.helper.RsaKeyHelper;
-
-import java.util.Map;
 
 /**
  */
@@ -16,6 +15,7 @@ import java.util.Map;
 public class AuthServerRunner implements CommandLineRunner {
 //    @Autowired
 //    private RedisTemplate<String, String> redisTemplate;
+	
     private static final String REDIS_USER_PRI_KEY = "AUTH:JWT:PRI";
     private static final String REDIS_USER_PUB_KEY = "AUTH:JWT:PUB";
 

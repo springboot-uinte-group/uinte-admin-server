@@ -23,49 +23,53 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("jwt")
 @IgnoreUserToken
 public class AuthController {
-    private Logger log = LoggerFactory.getLogger(AuthController.class);
-    @Autowired
-    private AuthService authService;
-    @Autowired
-    UserAuthConfig userAuthConfig;
-    /**
-     * 获取用户的token
-     * @param authenticationRequest  账号密码封装类
-     * @return
-     * @throws Exception
-     */
+	private Logger log = LoggerFactory.getLogger(AuthController.class);
+	@Autowired
+	private AuthService authService;
+	@Autowired
+	UserAuthConfig userAuthConfig;
 
-    @RequestMapping(value = "token", method = RequestMethod.POST)
-    public ObjectRestResponse<String> createAuthenticationToken(
-            @RequestBody JwtAuthenticationRequest authenticationRequest) throws Exception {
-        log.info(authenticationRequest.getUsername()+" require logging...");
-        final String token = authService.login(authenticationRequest);
-        return new ObjectRestResponse<>().data(token);
-    }
+	/**
+	 * 获取用户的token
+	 * 
+	 * @param authenticationRequest 账号密码封装类
+	 * @return
+	 * @throws Exception
+	 */
 
-    /**
-     * 刷新token 传入旧的token 获取用户信息  然后根据用户信息构造新的token
-     * @param request
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping(value = "refresh", method = RequestMethod.GET)
-    public ObjectRestResponse<String> refreshAndGetAuthenticationToken(
-            HttpServletRequest request) throws Exception {
-        String token = request.getHeader(userAuthConfig.getTokenHeader());
-        String refreshedToken = authService.refresh(token);
-        return new ObjectRestResponse<>().data(refreshedToken);
-    }
+	@RequestMapping(value = "token", method = RequestMethod.POST)
+	public ObjectRestResponse<String> createAuthenticationToken(
+			@RequestBody JwtAuthenticationRequest authenticationRequest) throws Exception {
+		log.info(authenticationRequest.getUsername() + " require logging...");
+		final String token = authService.login(authenticationRequest);
+		return new ObjectRestResponse<String>().data(token);
+	}
 
-    /**
-     * 传入token  获取用户信息
-     * @param token
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping(value = "verify", method = RequestMethod.GET)
-    public ObjectRestResponse<?> verify(String token) throws Exception {
-        authService.validate(token);
-        return new ObjectRestResponse<>();
-    }
+	/**
+	 * 刷新token 传入旧的token 获取用户信息 然后根据用户信息构造新的token
+	 * 
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "refresh", method = RequestMethod.GET)
+	public ObjectRestResponse<String> refreshAndGetAuthenticationToken(HttpServletRequest request) throws Exception {
+		String token = request.getHeader(userAuthConfig.getTokenHeader());
+		String refreshedToken = authService.refresh(token);
+		return new ObjectRestResponse<String>().data(refreshedToken);
+	}
+
+	/**
+	 * 传入token 获取用户信息
+	 * 
+	 * @param token
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "verify", method = RequestMethod.GET)
+	public ObjectRestResponse<?> verify(String token) throws Exception {
+		authService.validate(token);
+		return new ObjectRestResponse<>();
+	}
+
 }

@@ -11,36 +11,39 @@
     <result column="type" jdbcType="CHAR" property="type" />
     <result column="group_type" jdbcType="VARCHAR" property="groupType" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="crt_time" jdbcType="DATE" property="crtTime" />
-    <result column="crt_user" jdbcType="VARCHAR" property="crtUser" />
-    <result column="crt_name" jdbcType="VARCHAR" property="crtName" />
-    <result column="crt_host" jdbcType="VARCHAR" property="crtHost" />
-    <result column="upd_time" jdbcType="DATE" property="updTime" />
-    <result column="upd_user" jdbcType="VARCHAR" property="updUser" />
-    <result column="upd_name" jdbcType="VARCHAR" property="updName" />
-    <result column="upd_host" jdbcType="VARCHAR" property="updHost" />
+    <result column="create_time" jdbcType="DATE" property="crtTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="crtUser" />
+    <result column="create_name" jdbcType="VARCHAR" property="crtName" />
+    <result column="create_host" jdbcType="VARCHAR" property="crtHost" />
+    <result column="update_time" jdbcType="DATE" property="updTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updUser" />
+    <result column="update_name" jdbcType="VARCHAR" property="updName" />
+    <result column="update_host" jdbcType="VARCHAR" property="updHost" />
   </resultMap>
+  
   <delete id="deleteGroupMembersById">
-      delete from base_group_member where group_id = #{groupId}
+      delete from uinte_group_member where group_id = #{groupId}
   </delete>
+  
    <!--删除用户组领导表通过用户组id-->
   <delete id="deleteGroupLeadersById">
-    delete from base_group_leader where group_id = #{groupId}
+    delete from uinte_group_leader where group_id = #{groupId}
   </delete>
+  
   <insert id="insertGroupMembersById">
-    insert into base_group_member (
-       group_id,user_id
-    )
-    values(
-       #{groupId},#{userId}
+    insert into uinte_group_member (
+       id,group_id,user_id,create_time
+    ) values (
+       #{id},#{groupId},#{userId},#{crtTime}
     )
   </insert>
+  
   <insert id="insertGroupLeadersById">
-    insert into base_group_leader (
-       group_id,user_id
-    )
-    values(
-       #{groupId},#{userId}
+    insert into uinte_group_leader (
+       id,group_id,user_id,create_time
+    ) values (
+       #{id},#{groupId},#{userId},#{crtTime}
     )
   </insert>
+  
 </mapper>

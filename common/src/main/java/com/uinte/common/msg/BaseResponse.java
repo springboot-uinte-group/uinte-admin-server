@@ -1,7 +1,5 @@
 package com.uinte.common.msg;
 
-/**
- */
 public class BaseResponse {
     private int status = 200;
     private String message;
