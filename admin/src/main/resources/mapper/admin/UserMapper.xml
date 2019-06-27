@@ -13,7 +13,7 @@
     <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
     <result column="tel_phone" jdbcType="VARCHAR" property="telPhone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
     <result column="type" jdbcType="CHAR" property="type" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="create_time" jdbcType="DATE" property="crtTime" />

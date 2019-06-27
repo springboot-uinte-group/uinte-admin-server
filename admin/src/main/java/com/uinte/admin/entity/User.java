@@ -30,7 +30,7 @@ public class User extends BaseEntity {
 
     private String email;
 
-    private String sex;
+    private String gender;
 
     private String type;
 
@@ -172,21 +172,15 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
-    /**
-     * @return sex
-     */
-    public String getSex() {
-        return sex;
-    }
+    public String getGender() {
+		return gender;
+	}
 
-    /**
-     * @param sex
-     */
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-    /**
+	/**
      * @return type
      */
     public String getType() {
