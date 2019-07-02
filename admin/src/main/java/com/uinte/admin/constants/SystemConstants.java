@@ -2,7 +2,7 @@ package com.uinte.admin.constants;
 
 /**
  */
-public interface CommonConstants {
+public interface SystemConstants {
 	// 资源类型
 	String RESOURCE_TYPE_MENU = "menu";
 	String RESOURCE_TYPE_BTN = "button";

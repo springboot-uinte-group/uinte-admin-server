@@ -1,6 +1,6 @@
 package com.uinte.admin.util.helper;
 
-import com.uinte.admin.constants.CommonConstants;
+import com.uinte.admin.constants.SystemConstants;
 import com.uinte.admin.util.IJWTInfo;
 import com.uinte.admin.util.user.JWTInfo;
 import com.uinte.common.util.StringHelper;
@@ -29,8 +29,8 @@ public class JWTHelper {
     public static String generateToken(IJWTInfo jwtInfo, String priKeyPath, int expire) throws Exception {
         String compactJws = Jwts.builder()
                 .setSubject(jwtInfo.getUniqueName())
-                .claim(CommonConstants.JWT_KEY_USER_ID, jwtInfo.getId())
-                .claim(CommonConstants.JWT_KEY_NAME, jwtInfo.getName())
+                .claim(SystemConstants.JWT_KEY_USER_ID, jwtInfo.getId())
+                .claim(SystemConstants.JWT_KEY_NAME, jwtInfo.getName())
                 .setExpiration(DateTime.now().plusSeconds(expire).toDate())
                 .signWith(SignatureAlgorithm.RS256, rsaKeyHelper.getPrivateKey(priKeyPath))
                 .compact();
@@ -49,8 +49,8 @@ public class JWTHelper {
     public static String generateToken(IJWTInfo jwtInfo, byte priKey[], int expire) throws Exception {
         String compactJws = Jwts.builder()
                 .setSubject(jwtInfo.getUniqueName())
-				.claim(CommonConstants.JWT_KEY_USER_ID, jwtInfo.getId())
-                .claim(CommonConstants.JWT_KEY_NAME, jwtInfo.getName())
+				.claim(SystemConstants.JWT_KEY_USER_ID, jwtInfo.getId())
+                .claim(SystemConstants.JWT_KEY_NAME, jwtInfo.getName())
                 .setExpiration(DateTime.now().plusSeconds(expire).toDate())
                 .signWith(SignatureAlgorithm.RS256, rsaKeyHelper.getPrivateKey(priKey))
                 .compact();
@@ -91,7 +91,7 @@ public class JWTHelper {
     public static IJWTInfo getInfoFromToken(String token, String pubKeyPath) throws Exception {
         Jws<Claims> claimsJws = parserToken(token, pubKeyPath);
         Claims body = claimsJws.getBody();
-        return new JWTInfo(body.getSubject(), StringHelper.getObjectValue(body.get(CommonConstants.JWT_KEY_USER_ID)), StringHelper.getObjectValue(body.get(CommonConstants.JWT_KEY_NAME)));
+        return new JWTInfo(body.getSubject(), StringHelper.getObjectValue(body.get(SystemConstants.JWT_KEY_USER_ID)), StringHelper.getObjectValue(body.get(SystemConstants.JWT_KEY_NAME)));
     }
     
     /**
@@ -105,6 +105,6 @@ public class JWTHelper {
     public static IJWTInfo getInfoFromToken(String token, byte[] pubKey) throws Exception {
         Jws<Claims> claimsJws = parserToken(token, pubKey);
         Claims body = claimsJws.getBody();
-		return new JWTInfo(body.getSubject(), StringHelper.getObjectValue(body.get(CommonConstants.JWT_KEY_USER_ID)), StringHelper.getObjectValue(body.get(CommonConstants.JWT_KEY_NAME)));
+		return new JWTInfo(body.getSubject(), StringHelper.getObjectValue(body.get(SystemConstants.JWT_KEY_USER_ID)), StringHelper.getObjectValue(body.get(SystemConstants.JWT_KEY_NAME)));
     }
 }

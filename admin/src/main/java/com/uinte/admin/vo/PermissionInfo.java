@@ -2,64 +2,60 @@ package com.uinte.admin.vo;
 
 import java.io.Serializable;
 
-/**
- *
- */
-public class PermissionInfo implements Serializable{
-    private String code;
-    private String type;
-    private String uri;
-    private String method;
-    private String name;
-    private String menu;
+public class PermissionInfo implements Serializable {
+	private static final long serialVersionUID = 8811315865912269473L;
+	private String code;
+	private String type;
+	private String uri;
+	private String method;
+	private String name;
+	private String menu;
 
-    public String getMenu() {
-        return menu;
-    }
+	public String getMenu() {
+		return menu;
+	}
 
-    public void setMenu(String menu) {
-        this.menu = menu;
-    }
+	public void setMenu(String menu) {
+		this.menu = menu;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
+	public String getMethod() {
+		return method;
+	}
 
+	public void setMethod(String method) {
+		this.method = method;
+	}
 
-    public String getMethod() {
-        return method;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setMethod(String method) {
-        this.method = method;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public String getType() {
+		return type;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setType(String type) {
+		this.type = type;
+	}
 
-    public String getType() {
-        return type;
-    }
+	public String getUri() {
+		return uri;
+	}
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getUri() {
-        return uri;
-    }
-
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
 }
