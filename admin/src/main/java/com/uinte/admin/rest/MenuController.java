@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uinte.admin.biz.MenuBiz;
 import com.uinte.admin.biz.UserBiz;
-import com.uinte.admin.constants.AdminConstant;
-import com.uinte.admin.entity.Menu;
 import com.uinte.admin.vo.MenuTree;
+import com.uinte.common.constant.AdminConstant;
+import com.uinte.common.entity.user.Menu;
 import com.uinte.common.rest.BaseController;
 import com.uinte.common.util.TreeUtil;
 

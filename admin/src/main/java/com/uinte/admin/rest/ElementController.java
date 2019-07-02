@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uinte.admin.biz.ElementBiz;
 import com.uinte.admin.biz.UserBiz;
-import com.uinte.admin.entity.Element;
+import com.uinte.common.entity.user.Element;
 import com.uinte.common.msg.ObjectRestResponse;
 import com.uinte.common.msg.TableResultResponse;
 import com.uinte.common.rest.BaseController;

@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uinte.admin.biz.GroupBiz;
-import com.uinte.admin.constants.AdminConstant;
-import com.uinte.admin.entity.Group;
 import com.uinte.admin.vo.AuthorityMenuTree;
 import com.uinte.admin.vo.GroupTree;
 import com.uinte.admin.vo.GroupUsers;
+import com.uinte.common.constant.AdminConstant;
+import com.uinte.common.entity.user.Group;
 import com.uinte.common.msg.ObjectRestResponse;
 import com.uinte.common.rest.BaseController;
 import com.uinte.common.util.TreeUtil;

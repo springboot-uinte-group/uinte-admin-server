@@ -1,21 +1,26 @@
 package com.uinte.admin.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.uinte.admin.biz.MenuBiz;
 import com.uinte.admin.biz.UserBiz;
-import com.uinte.admin.entity.Menu;
-import com.uinte.admin.entity.User;
 import com.uinte.admin.service.PermissionService;
 import com.uinte.admin.vo.MenuTree;
 import com.uinte.admin.vo.user.FrontUser;
 import com.uinte.common.context.BaseContextHandler;
+import com.uinte.common.entity.user.Menu;
+import com.uinte.common.entity.user.User;
 import com.uinte.common.msg.ObjectRestResponse;
 import com.uinte.common.rest.BaseController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("user")

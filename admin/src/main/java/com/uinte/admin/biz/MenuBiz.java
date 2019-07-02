@@ -1,15 +1,15 @@
 package com.uinte.admin.biz;
 
-import com.uinte.admin.constants.AdminConstant;
-import com.uinte.admin.entity.Menu;
-import com.uinte.admin.mapper.MenuMapper;
-import com.uinte.common.biz.BaseBiz;
+import java.util.List;
 
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.uinte.admin.mapper.MenuMapper;
+import com.uinte.common.biz.BaseBiz;
+import com.uinte.common.constant.AdminConstant;
+import com.uinte.common.entity.user.Menu;
 
 @Service
 @Transactional(rollbackFor = Exception.class)

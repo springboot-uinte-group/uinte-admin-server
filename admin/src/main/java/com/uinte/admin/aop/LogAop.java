@@ -1,9 +1,19 @@
 package com.uinte.admin.aop;
 
+import java.util.Arrays;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,12 +22,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.alibaba.fastjson.JSONObject;
 import com.uinte.admin.biz.GateLogBiz;
-import com.uinte.admin.entity.GateLog;
 import com.uinte.common.context.BaseContextHandler;
-import com.uinte.common.util.UUIDUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
+import com.uinte.common.entity.user.GateLog;
 
 /**
  * @Auther: admin

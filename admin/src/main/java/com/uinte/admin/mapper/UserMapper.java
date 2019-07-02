@@ -1,13 +1,13 @@
 package com.uinte.admin.mapper;
 
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.uinte.admin.entity.User;
+import com.uinte.common.entity.user.User;
 
 import tk.mybatis.mapper.common.Mapper;
-
-import java.util.List;
 
 public interface UserMapper extends Mapper<User> {
     /**

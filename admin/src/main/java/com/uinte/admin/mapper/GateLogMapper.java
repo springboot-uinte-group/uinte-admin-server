@@ -1,6 +1,6 @@
 package com.uinte.admin.mapper;
 
-import com.uinte.admin.entity.GateLog;
+import com.uinte.common.entity.user.GateLog;
 
 import tk.mybatis.mapper.common.Mapper;
 

@@ -1,13 +1,13 @@
 package com.uinte.admin.biz;
 
-import com.uinte.admin.entity.Element;
-import com.uinte.admin.mapper.ElementMapper;
-import com.uinte.common.biz.BaseBiz;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.uinte.admin.mapper.ElementMapper;
+import com.uinte.common.biz.BaseBiz;
+import com.uinte.common.entity.user.Element;
 
 /**
  *

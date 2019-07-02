@@ -3,7 +3,7 @@ package com.uinte.admin.vo;
 
 import java.util.List;
 
-import com.uinte.admin.entity.User;
+import com.uinte.common.entity.user.User;
 
 /**
  */

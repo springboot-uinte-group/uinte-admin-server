@@ -1,21 +1,9 @@
 package com.uinte.admin.service;
 
-import com.alibaba.fastjson.JSON;
-import com.uinte.admin.biz.ElementBiz;
-import com.uinte.admin.biz.MenuBiz;
-import com.uinte.admin.biz.UserBiz;
-import com.uinte.admin.constants.AdminConstant;
-import com.uinte.admin.entity.Element;
-import com.uinte.admin.entity.Menu;
-import com.uinte.admin.entity.User;
-import com.uinte.admin.util.user.JwtTokenUtil;
-import com.uinte.admin.vo.MenuTree;
-import com.uinte.admin.vo.PermissionInfo;
-import com.uinte.admin.vo.user.FrontUser;
-import com.uinte.admin.vo.user.UserInfo;
-import com.uinte.common.constant.CommonConstants;
-import com.uinte.common.util.BaseEntityTools;
-import com.uinte.common.util.TreeUtil;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -24,10 +12,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.uinte.admin.biz.ElementBiz;
+import com.uinte.admin.biz.MenuBiz;
+import com.uinte.admin.biz.UserBiz;
+import com.uinte.admin.util.user.JwtTokenUtil;
+import com.uinte.admin.vo.MenuTree;
+import com.uinte.admin.vo.PermissionInfo;
+import com.uinte.admin.vo.user.FrontUser;
+import com.uinte.admin.vo.user.UserInfo;
+import com.uinte.common.constant.AdminConstant;
+import com.uinte.common.constant.CommonConstants;
+import com.uinte.common.entity.user.Element;
+import com.uinte.common.entity.user.Menu;
+import com.uinte.common.entity.user.User;
+import com.uinte.common.util.BaseEntityTools;
+import com.uinte.common.util.TreeUtil;
 
 /**
  */

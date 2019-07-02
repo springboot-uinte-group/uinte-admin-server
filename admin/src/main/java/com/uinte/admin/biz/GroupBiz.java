@@ -15,12 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.uinte.admin.constants.AdminConstant;
-import com.uinte.admin.entity.Group;
-import com.uinte.admin.entity.GroupLeader;
-import com.uinte.admin.entity.GroupMember;
-import com.uinte.admin.entity.Menu;
-import com.uinte.admin.entity.ResourceAuthority;
 import com.uinte.admin.mapper.GroupMapper;
 import com.uinte.admin.mapper.MenuMapper;
 import com.uinte.admin.mapper.ResourceAuthorityMapper;
@@ -28,6 +22,12 @@ import com.uinte.admin.mapper.UserMapper;
 import com.uinte.admin.vo.AuthorityMenuTree;
 import com.uinte.admin.vo.GroupUsers;
 import com.uinte.common.biz.BaseBiz;
+import com.uinte.common.constant.AdminConstant;
+import com.uinte.common.entity.user.Group;
+import com.uinte.common.entity.user.GroupLeader;
+import com.uinte.common.entity.user.GroupMember;
+import com.uinte.common.entity.user.Menu;
+import com.uinte.common.entity.user.ResourceAuthority;
 import com.uinte.common.util.UUIDUtils;
 
 @Service

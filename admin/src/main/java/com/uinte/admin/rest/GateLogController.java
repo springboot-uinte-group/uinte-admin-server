@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uinte.admin.biz.GateLogBiz;
-import com.uinte.admin.entity.GateLog;
+import com.uinte.common.entity.user.GateLog;
 import com.uinte.common.msg.TableResultResponse;
 import com.uinte.common.rest.BaseController;
 import com.uinte.common.util.Query;

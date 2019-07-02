@@ -1,12 +1,12 @@
 package com.uinte.admin.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-import com.uinte.admin.entity.Menu;
+import com.uinte.common.entity.user.Menu;
 
 import tk.mybatis.mapper.common.Mapper;
-
-import java.util.List;
 
 public interface MenuMapper extends Mapper<Menu> {
     public List<Menu> selectMenuByAuthorityId(@Param("authorityId") String authorityId, @Param("authorityType") String authorityType);

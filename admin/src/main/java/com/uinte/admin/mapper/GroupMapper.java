@@ -2,9 +2,9 @@ package com.uinte.admin.mapper;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.uinte.admin.entity.Group;
-import com.uinte.admin.entity.GroupLeader;
-import com.uinte.admin.entity.GroupMember;
+import com.uinte.common.entity.user.Group;
+import com.uinte.common.entity.user.GroupLeader;
+import com.uinte.common.entity.user.GroupMember;
 
 import tk.mybatis.mapper.common.Mapper;
 

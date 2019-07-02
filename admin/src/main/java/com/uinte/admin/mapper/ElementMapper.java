@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.uinte.admin.entity.Element;
+import com.uinte.common.entity.user.Element;
 
 import tk.mybatis.mapper.common.Mapper;
 

@@ -2,7 +2,7 @@ package com.uinte.admin.mapper;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.uinte.admin.entity.ResourceAuthority;
+import com.uinte.common.entity.user.ResourceAuthority;
 
 import tk.mybatis.mapper.common.Mapper;
 
