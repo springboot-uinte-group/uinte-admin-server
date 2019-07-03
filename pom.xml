@@ -28,7 +28,8 @@
 		<module>http-invoker</module>
 	</modules>
 	<packaging>pom</packaging>
-	<dependencies> </dependencies>
+	<dependencies>
+	</dependencies>
 
 	<repositories>
 		<repository>
@@ -43,5 +44,17 @@
 			</snapshots>
 		</repository>
 	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

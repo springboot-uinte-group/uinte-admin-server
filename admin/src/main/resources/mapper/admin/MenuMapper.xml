@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uinte.admin.mapper.MenuMapper">
 
-	<resultMap id="BaseResultMap" type="com.uinte.admin.entity.Menu">
+	<resultMap id="BaseResultMap" type="com.uinte.common.entity.user.Menu">
 		<!-- WARNING - @mbggenerated -->
 		<id column="id" jdbcType="VARCHAR" property="id" />
 		<result column="code" jdbcType="VARCHAR" property="code" />
