@@ -5,7 +5,7 @@ import com.uinte.common.service.TestService;
 import com.uinte.common.vo.user.JwtAuthenticationRequest;
 import com.uinte.httpinvoker.HttpApiProxyFactory;
 
-public class MainApp {
+public class ExecutorApplication {
 
 	public static void main(String[] args) {
 		HttpApiProxyFactory factory = new HttpApiProxyFactory(request -> {
